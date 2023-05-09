@@ -14,6 +14,9 @@ struct Iris: Decodable {
     var petalLenght: Double
     var petalWidth: Double
     let species: String
+    var vector: SIMD4<Double>? {
+        return SIMD4(sepalLenght, sepalWidth, petalLenght, petalWidth)
+    }
     
     enum CodingKeys: String, CodingKey {
         case id = "Id"
