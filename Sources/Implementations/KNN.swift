@@ -8,7 +8,7 @@
 import Foundation
 import simd
 
-class Knn: Classifier {
+class KNN: Classifier {
     private(set) var trainingData: [Iris] = [Iris]()
     private var splitedDataset: ([Iris], [Iris])!
     var k: Int
