@@ -14,8 +14,7 @@ class Validator {
         
         for testInstance in testDataset {
             let expect = testInstance.species
-            let predict = classifier.predict(SIMD4(testInstance.petalLenght, testInstance.petalWidth, testInstance.sepalLenght, testInstance.sepalWidth))
-            
+            let predict = classifier.predict(testInstance.vector!)
             if predict == expect { hits += 1 }
         }
         print("Hits: \(hits)")

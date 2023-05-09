@@ -30,9 +30,10 @@ struct Iris: Decodable {
     static func loadData() -> [Iris] {
         guard let url = Bundle.module.url(forResource: "Iris", withExtension: "json") else { return [] }
         do {
-            let data = try Data(contentsOf: url)
-            let json = try JSONDecoder().decode([Iris].self, from: data)
-            return json
+            let binaryData = try Data(contentsOf: url)
+            var irisData = try JSONDecoder().decode([Iris].self, from: binaryData)
+            irisData.shuffle() // Using shuffle everytime, in theory, this will return a new dataset
+            return irisData
         }
         catch {
             print(error)

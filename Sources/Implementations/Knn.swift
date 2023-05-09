@@ -16,7 +16,6 @@ class Knn: Classifier {
     init(k: Int, splitedDataset: ([Iris], [Iris])) {
         self.k = k
         self.splitedDataset = splitedDataset
-        print("Training dataset lenght: \(splitedDataset.0.count)")
     }
     
     func train() {  for trainingElement in splitedDataset.0 { trainingData.append(trainingElement) } }
