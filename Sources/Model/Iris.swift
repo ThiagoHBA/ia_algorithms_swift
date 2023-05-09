@@ -13,7 +13,7 @@ struct Iris: Decodable {
     var sepalWidth: Double
     var petalLenght: Double
     var petalWidth: Double
-    let species: String
+    let species: Specie
     var vector: SIMD4<Double>? {
         return SIMD4(sepalLenght, sepalWidth, petalLenght, petalWidth)
     }
@@ -39,5 +39,16 @@ struct Iris: Decodable {
             print(error)
         }
         return []
+    }
+    
+    static func fromSimd(id: Int, simd: SIMD4<Double>, species: String) -> Iris {
+        return Iris(
+            id: id,
+            sepalLenght: simd.x,
+            sepalWidth: simd.y,
+            petalLenght: simd.z,
+            petalWidth: simd.w,
+            species: Specie(rawValue: species)!
+        )
     }
 }

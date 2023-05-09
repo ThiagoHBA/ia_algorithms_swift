@@ -9,8 +9,8 @@ import Foundation
 import simd
 
 class KNN: Classifier {
+    var splitedDataset: ([Iris], [Iris])
     private(set) var trainingData: [Iris] = [Iris]()
-    private var splitedDataset: ([Iris], [Iris])!
     var k: Int
     
     init(k: Int, splitedDataset: ([Iris], [Iris])) {
@@ -34,9 +34,9 @@ class KNN: Classifier {
         for i in 0..<k { neighbors.append(distances[i].0) }
         
         let countSpecies = [
-            "Iris-setosa": neighbors.filter { $0.species == "Iris-setosa"}.count,
-            "Iris-versicolor": neighbors.filter { $0.species == "Iris-versicolor"}.count,
-            "Iris-virginica": neighbors.filter { $0.species == "Iris-virginica"}.count
+            "Iris-setosa": neighbors.filter { $0.species.rawValue == "Iris-setosa"}.count,
+            "Iris-versicolor": neighbors.filter { $0.species.rawValue == "Iris-versicolor"}.count,
+            "Iris-virginica": neighbors.filter { $0.species.rawValue == "Iris-virginica"}.count
         ]
         
         return countSpecies.sorted(by: { $0.value > $1.value } ).first!.key

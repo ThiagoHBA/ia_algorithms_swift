@@ -13,7 +13,7 @@ class Validator {
         var hits = 0
         
         for testInstance in testDataset {
-            let expect = testInstance.species
+            let expect = testInstance.species.rawValue
             let predict = classifier.predict(testInstance.vector!)
             if predict == expect { hits += 1 }
         }
