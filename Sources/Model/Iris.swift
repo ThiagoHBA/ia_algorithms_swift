@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Data Object refering to Iris dataset.
 struct Iris: Decodable {
     var id: Int
     var sepalLenght: Double
@@ -14,6 +15,7 @@ struct Iris: Decodable {
     var petalLenght: Double
     var petalWidth: Double
     let species: Specie
+    /// SIMD (Single Instruct Multiple Data) containing all atributes used to predict a Iris species.
     var vector: SIMD4<Double>? {
         return SIMD4(sepalLenght, sepalWidth, petalLenght, petalWidth)
     }
@@ -27,6 +29,10 @@ struct Iris: Decodable {
         case species = "Species"
     }
     
+    /**
+        Function used to load the dataset JSON data.
+      - Returns: Decoded array of Iris refering to the dataset.
+     */
     static func loadData() -> [Iris] {
         guard let url = Bundle.module.url(forResource: "Iris", withExtension: "json") else { return [] }
         do {
@@ -41,6 +47,7 @@ struct Iris: Decodable {
         return []
     }
     
+    /// Convert in Iris object using as start point a SIMD structure.
     static func fromSimd(id: Int, simd: SIMD4<Double>, species: String) -> Iris {
         return Iris(
             id: id,
