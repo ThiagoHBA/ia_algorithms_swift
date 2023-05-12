@@ -53,7 +53,7 @@ final class Validator {
             if predict == expect { hits += 1 }
         }
         print("Hits: \(hits)")
-        let percent = Double(CGFloat(hits)/CGFloat(testDataset.count))
+        let percent = Double(CGFloat(hits)/CGFloat(testDataset.count)) * 100.0
         return percent
     }
 }

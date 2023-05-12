@@ -16,6 +16,6 @@ print("Test dataset lenght: \(dataset.1.count)")
 
 // MARK: - Percepton
 print("Perceptron: ")
-let expectedSpecie: Specie = .IrisSetosa
+let expectedSpecie: Specie = .IrisVirginica
 let perceptron = Perceptron(dataset: dataset, expectedSpecie: expectedSpecie, ephocs: 200)
 print("Percent: \(Validator.validateClassifier(classifier: perceptron, testDataset: dataset.1, expectedClass: expectedSpecie)) %\n")
