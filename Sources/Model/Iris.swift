@@ -8,7 +8,7 @@
 import Foundation
 
 /// Data Object refering to Iris dataset.
-struct Iris: Decodable {
+struct Iris: Decodable, Equatable {
     var id: Int
     var sepalLenght: Double
     var sepalWidth: Double
