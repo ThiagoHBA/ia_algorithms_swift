@@ -18,7 +18,7 @@ class CoreMLAdapter: NSObject, MLCustomModel {
         super.init()
     }
     
-    func prediction(from input: MLFeatureProvider, options: MLPredictionOptions) throws -> MLFeatureProvider {
+    func prediction(from input: MLFeatureProvider, options: MLPredictionOptions = MLPredictionOptions()) throws -> MLFeatureProvider {
         guard let inputInstance = input.featureValue(for: "vector")?.multiArrayValue else { return IrisOutput(output: 0)}
         let vector = SIMD4<Double>(
             Double(truncating: inputInstance[0]),
