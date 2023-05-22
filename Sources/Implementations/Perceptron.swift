@@ -7,9 +7,6 @@
 
 import Foundation
 
-typealias Weights = (w1: Double, w2: Double, w3: Double, w4: Double, w5: Double)
-typealias PerceptronInputs = (Double, Double, Double, Double, Double)
-
 class Perceptron: BinaryClassifier {
     var splitedDataset: ([Iris], [Iris])
     var expectedSpecie: Specie
@@ -66,5 +63,5 @@ class Perceptron: BinaryClassifier {
         return output
     }
     
-    private func activationFunc(_ u: Double) -> Int { return u >= 0.0 ? 1 : 0 }
+    func activationFunc(_ u: Double) -> Int { return u >= 0.0 ? 1 : 0 }
 }
